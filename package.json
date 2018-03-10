@@ -1,0 +1,18 @@
+{
+  "name": "input-reader",
+  "version": "1.0.0",
+  "description": "Library for reading whitespace-separated data, which is a common input data format for tasks in many algorithmic competitions.",
+  "main": "./src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Łukasz Jenczmyk",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lukix/input-reader.git"
+  },
+  "dependencies": {
+    "zip-array": "1.0.1"
+  }
+}
