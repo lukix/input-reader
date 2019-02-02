@@ -32,4 +32,26 @@ describe('Multi-line mapping', () => {
 		const expectedResult = { a: 5, b: 7, c: 1, d: 2, e: 3 }
 		expect(result).toStrictEqual(expectedResult)
 	})
+
+	test('Less data then pattern specifies', () => {
+		const data = `
+			5 7
+		`
+		const pattern = `
+			a b
+			c d e
+			f
+		`
+		const result = reader(data, pattern)
+	
+		const expectedResult = {
+			a: 5,
+			b: 7,
+			c: undefined,
+			d: undefined,
+			e: undefined,
+			f: undefined
+		}
+		expect(result).toStrictEqual(expectedResult)
+	})
 })

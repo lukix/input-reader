@@ -28,7 +28,7 @@ function parseData(data, pattern, passedOptions = {}) {
 function constructDataObject(dataLines, patternLineObjects) {
 	return patternLineObjects.map((patternLineObject, index) => {
 		switch(patternLineObject.type) {
-			case LINE_TYPE: return constructDataObjectFromSingleLine(dataLines[index], patternLineObject)
+			case LINE_TYPE: return constructDataObjectFromSingleLine(dataLines[index] || [], patternLineObject)
 			case LINES_ARRAY_TYPE: return {
 				[patternLineObject.name]: dataLines
 					.slice(index)

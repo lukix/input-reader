@@ -45,4 +45,20 @@ describe('Multiline rest operator', () => {
 		const expectedResult = { lines: [{ values: [1, 2, 3] }, { values: [4, 5, 6] }] }
 		expect(result).toStrictEqual(expectedResult)
 	})
+
+	test('Empty rest', () => {
+		const data = `
+			1 2
+			3 4
+		`
+		const pattern = `
+			a b
+			c d
+			...lines[...values]
+		`
+		const result = reader(data, pattern)
+	
+		const expectedResult = { a: 1, b: 2, c: 3, d: 4, lines: [] }
+		expect(result).toStrictEqual(expectedResult)
+	})
 })
