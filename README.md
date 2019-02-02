@@ -82,6 +82,21 @@ const pattern = `
 reader(data, pattern) // { foo: 9, bar: [{ a: 8, b: 7 }, { a: 6, b: 5 }] }
 ```
 
+**Empty multi-line rest operator**
+If you don't specify the structure of each line, all the values will be collected directly into arrays.
+```javascript
+const data = `
+    9
+    8 7
+    6 5
+`
+const pattern = `
+    foo
+    ...bar[]
+`
+reader(data, pattern) // { foo: 9, bar: [[8, 7], [6, 5]] }
+```
+
 **Nested rest operator**
 ```javascript
 const data = `
