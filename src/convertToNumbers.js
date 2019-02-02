@@ -1,15 +1,13 @@
-const { createObject } = require('./createObject')
-
 function convertToNumbers(object) {
-	return typeof object === 'object'
+	return typeof object === 'object' && object !== null
 		? Array.isArray(object)
 			? object.map(item => convertToNumbers(item))
-			: Object.keys(object).reduce((newObj, key) => (
-					Object.assign({}, newObj, createObject(key, convertToNumbers(object[key])))
+			: Object.entries(object).reduce((newObj, [key, value]) => (
+					Object.assign({}, newObj, { [key]: convertToNumbers(value) })
 				), {})
-		: Number.isNaN(Number(object))
-			? object
-			: Number(object)
+		: typeof object === 'string' && !Number.isNaN(Number(object))
+			? Number(object)
+			: object
 }
 
 module.exports = { convertToNumbers }

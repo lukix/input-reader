@@ -24,7 +24,7 @@ describe('Single-line mapping', () => {
 		const pattern = `a b c`
 		const result = reader(data, pattern)
 	
-		const expectedResult = { a: 5, b: 7 }
+		const expectedResult = { a: 5, b: 7, c: undefined }
 		expect(result).toStrictEqual(expectedResult)
 	})
 
