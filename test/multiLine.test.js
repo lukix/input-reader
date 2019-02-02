@@ -11,7 +11,7 @@ describe('Multi-line mapping', () => {
 			c d e
 		`
 		const result = reader(data, pattern)
-	
+
 		const expectedResult = { a: 5, b: 7, c: 1, d: 2, e: 3 }
 		expect(result).toStrictEqual(expectedResult)
 	})
@@ -43,7 +43,7 @@ describe('Multi-line mapping', () => {
 			f
 		`
 		const result = reader(data, pattern)
-	
+
 		const expectedResult = {
 			a: 5,
 			b: 7,

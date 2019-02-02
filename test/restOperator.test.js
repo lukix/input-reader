@@ -9,7 +9,7 @@ describe('Rest operator', () => {
 			first ...rest
 		`
 		const result = reader(data, pattern)
-	
+
 		const expectedResult = { first: 1, rest: [2, 3, 4, 5] }
 		expect(result).toStrictEqual(expectedResult)
 	})
@@ -22,7 +22,7 @@ describe('Rest operator', () => {
 			...rest
 		`
 		const result = reader(data, pattern)
-	
+
 		const expectedResult = { rest: [1, 2, 3, 4, 5] }
 		expect(result).toStrictEqual(expectedResult)
 	})
@@ -35,7 +35,7 @@ describe('Rest operator', () => {
 			a b ...rest
 		`
 		const result = reader(data, pattern)
-	
+
 		const expectedResult = { a: 1, b: 2, rest: [] }
 		expect(result).toStrictEqual(expectedResult)
 	})
