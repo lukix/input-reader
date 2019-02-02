@@ -3,7 +3,7 @@ const { trimEmptyEdgeLines } = require('./trimLines.js')
 const { convertToNumbers } = require('./convertToNumbers')
 const {
 	parseToSyntaxStructure,
-	types: { LINE_TYPE, LINES_ARRAY_TYPE, SYMBOL_TYPE, SYMBOLS_ARRAY_TYPE },
+	types: { LINE_TYPE, EMPTY_LINE_TYPE, LINES_ARRAY_TYPE, SYMBOL_TYPE, SYMBOLS_ARRAY_TYPE },
 } = require('./syntaxStructure')
 const { checkForErrors } = require('./syntaxStructureErrorCheck.js')
 
@@ -28,18 +28,25 @@ function parseData(data, pattern, passedOptions = {}) {
 function constructDataObject(dataLines, patternLineObjects) {
 	return patternLineObjects.map((patternLineObject, index) => {
 		switch(patternLineObject.type) {
-			case LINE_TYPE: return constructDataObjectFromSingleLine(dataLines[index] || [], patternLineObject)
-			case LINES_ARRAY_TYPE: return {
-				[patternLineObject.name]: dataLines
-					.slice(index)
-					.map(dataLine => constructDataObjectFromSingleLine(dataLine, patternLineObject.innerPattern))
-			}
-			default: throw Error('Unexpected type')
+			case LINE_TYPE:
+				return constructDataObjectFromSingleLine(dataLines[index] || [], patternLineObject)
+			case LINES_ARRAY_TYPE:
+				return {
+					[patternLineObject.name]: dataLines
+						.slice(index)
+						.map(dataLine => constructDataObjectFromSingleLine(dataLine, patternLineObject.innerPattern))
+				}
+			default:
+				throw Error('Unexpected type')
 		}
 	}).reduce((resultObject, currObject) => Object.assign({}, resultObject, currObject), {})
 }
 
 function constructDataObjectFromSingleLine(dataLine, patternLineObject) {
+	if(patternLineObject.type === EMPTY_LINE_TYPE) {
+		return dataLine
+	}
+
 	if(patternLineObject.type !== LINE_TYPE) {
 		throw Error('Unexpected type')
 	}

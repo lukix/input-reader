@@ -1,4 +1,5 @@
 const LINE_TYPE = 'line'
+const EMPTY_LINE_TYPE = 'emptyLine'
 const LINES_ARRAY_TYPE = 'linesArray'
 const ERROR_TYPE = 'error'
 const SYMBOL_TYPE = 'symbol'
@@ -37,6 +38,10 @@ function parseLinesArray(patternLine) {
 		}
 }
 function parseSingleLine(patternLine) {
+	if (patternLine === '') {
+		return { type: EMPTY_LINE_TYPE }
+	}
+
 	const symbols = patternLine.split(whitespaceRegex)
 	const symbolObjects = symbols.map((symbol) => (
 		symbol.substr(0, 3) === '...'
@@ -59,5 +64,5 @@ function isValidPropName(name) {
 
 module.exports = {
 	parseToSyntaxStructure,
-	types: { LINE_TYPE, LINES_ARRAY_TYPE, ERROR_TYPE, SYMBOL_TYPE, SYMBOLS_ARRAY_TYPE },
+	types: { LINE_TYPE, EMPTY_LINE_TYPE, LINES_ARRAY_TYPE, ERROR_TYPE, SYMBOL_TYPE, SYMBOLS_ARRAY_TYPE },
 }
