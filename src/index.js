@@ -4,7 +4,7 @@ const { convertToNumbers } = require('./convertToNumbers')
 const { createObject } = require('./createObject')
 const {
 	parseToSyntaxStructure,
-	types: { LINE_TYPE, LINES_ARRAY_TYPE, ERROR_TYPE, SYMBOL_TYPE, SYMBOLS_ARRAY_TYPE },
+	types: { LINE_TYPE, LINES_ARRAY_TYPE, SYMBOL_TYPE, SYMBOLS_ARRAY_TYPE },
 } = require('./syntaxStructure')
 const { checkForErrors } = require('./syntaxStructureErrorCheck.js')
 
@@ -12,8 +12,7 @@ function parseData(data, pattern, passedOptions = {}) {
 	const defaultOptions = { convertToNumbers: true }
 	const options = Object.assign({}, defaultOptions, passedOptions)
 	const whitespaceRegex = /[ ,]+/
-	const dataLines = trimEmptyEdgeLines(data.split('\n'))
-		.map(line => line.trim())
+	const dataLines = trimEmptyEdgeLines(data.split('\n').map(line => line.trim()))
 		.map(line => line.split(whitespaceRegex))
 	const syntaxStructureObject = parseToSyntaxStructure(
 		trimEmptyEdgeLines(pattern.split('\n')).join('\n')
