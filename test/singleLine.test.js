@@ -5,7 +5,7 @@ describe('Single-line mapping', () => {
 		const data = `5 7`
 		const pattern = `a b`
 		const result = reader(data, pattern)
-	
+
 		const expectedResult = { a: 5, b: 7 }
 		expect(result).toStrictEqual(expectedResult)
 	})
@@ -14,7 +14,7 @@ describe('Single-line mapping', () => {
 		const data = `5 7 3`
 		const pattern = `a b`
 		const result = reader(data, pattern)
-	
+
 		const expectedResult = { a: 5, b: 7 }
 		expect(result).toStrictEqual(expectedResult)
 	})
@@ -23,8 +23,8 @@ describe('Single-line mapping', () => {
 		const data = `5 7`
 		const pattern = `a b c`
 		const result = reader(data, pattern)
-	
-		const expectedResult = { a: 5, b: 7 }
+
+		const expectedResult = { a: 5, b: 7, c: undefined }
 		expect(result).toStrictEqual(expectedResult)
 	})
 
@@ -32,7 +32,7 @@ describe('Single-line mapping', () => {
 		const data = ` 5 7   test  `
 		const pattern = ` a  b c`
 		const result = reader(data, pattern)
-	
+
 		const expectedResult = { a: 5, b: 7, c: 'test' }
 		expect(result).toStrictEqual(expectedResult)
 	})

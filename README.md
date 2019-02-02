@@ -15,8 +15,8 @@ const data = `
     9 1 2 3
 `
 const pattern = `
-	a b
-	c ...arr
+    a b
+    c ...arr
 `
 reader(data, pattern) // { a: 4, b: 2, c: 9, arr: [1, 2, 3] }
 ```
@@ -49,8 +49,8 @@ const data = `
     3 4 5
 `
 const pattern = `
-	foo bar
-	a b c
+    foo bar
+    a b c
 `
 reader(data, pattern) // { foo: 1, bar: 2, a: 3, b: 4, c: 5 }
 ```
@@ -62,7 +62,7 @@ const data = `
     1 2 3 4
 `
 const pattern = `
-	foo ...bar
+    foo ...bar
 `
 reader(data, pattern) // { foo: 1, bar: [2, 3, 4] }
 ```
@@ -76,8 +76,8 @@ const data = `
     6 5
 `
 const pattern = `
-	foo
-	...bar[a b]
+    foo
+    ...bar[a b]
 `
 reader(data, pattern) // { foo: 9, bar: [{ a: 8, b: 7 }, { a: 6, b: 5 }] }
 ```
@@ -90,8 +90,8 @@ const data = `
     5 6 7 8
 `
 const pattern = `
-	foo
-	...bar[a ...b]
+    foo
+    ...bar[a ...b]
 `
 reader(data, pattern) // { foo: 9, bar: [{ a: 1, b: [2, 3, 4] }, { a: 5, b: [6, 7, 8] }] }
 ```
