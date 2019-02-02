@@ -61,4 +61,18 @@ describe('Multiline rest operator', () => {
 		const expectedResult = { a: 1, b: 2, c: 3, d: 4, lines: [] }
 		expect(result).toStrictEqual(expectedResult)
 	})
+
+	test('Simple arrays', () => {
+		const data = `
+			1 2
+			3 4
+		`
+		const pattern = `
+			...lines[]
+		`
+		const result = reader(data, pattern)
+
+		const expectedResult = { lines: [[1, 2], [3, 4]] }
+		expect(result).toStrictEqual(expectedResult)
+	})
 })
