@@ -28,7 +28,7 @@ describe('Single-line mapping', () => {
 		expect(result).toStrictEqual(expectedResult)
 	})
 
-	test('Whitespaces other than spaces', () => {
+	test('Multiple separating spaces', () => {
 		const data = ` 5 7   test  `
 		const pattern = ` a  b c`
 		const result = reader(data, pattern)

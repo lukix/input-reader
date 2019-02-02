@@ -5,7 +5,7 @@ function trimEmptyEdgeLines(lines) {
 }
 function trimEmptyBeginningLines(lines) {
 	for(let i = 0; i < lines.length; i++) {
-		if(lines[i] !== '') {
+		if(lines[i].replace(/\s/g, '') !== '') {
 			return lines.slice(i)
 		}
 	}
