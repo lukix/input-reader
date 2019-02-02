@@ -2,7 +2,6 @@
 JavaScript library for reading whitespace-separated data, which is a common input data format for tasks in many algorithmic competitions.
 
 ## Quick Start
----
 ### Installation
 ```bash
 npm install --save input-reader
@@ -16,14 +15,13 @@ const data = `
     9 1 2 3
 `
 const pattern = `
-	a b
-	c ...arr
+    a b
+    c ...arr
 `
-console.log(reader(data, pattern))   // { a: 4, b: 2, c: 9, arr: [1, 2, 3] }
+reader(data, pattern) // { a: 4, b: 2, c: 9, arr: [1, 2, 3] }
 ```
 
 ## API
----
 Module exports single function, which takes three parameters:
 ```javascript
 reader(data, pattern, options)
@@ -41,7 +39,7 @@ reader(data, pattern, options)
 ```javascript
 const data = '1 2'
 const pattern = 'foo bar'
-reader(data, pattern)   // { foo: 1, bar: 2 }
+reader(data, pattern) // { foo: 1, bar: 2 }
 ```
 
 **Multi-line mapping**
@@ -51,10 +49,10 @@ const data = `
     3 4 5
 `
 const pattern = `
-	foo bar
-	a b c
+    foo bar
+    a b c
 `
-reader(data, pattern)   // { foo: 1, bar: 2, a: 3, b: 4, c: 5 }
+reader(data, pattern) // { foo: 1, bar: 2, a: 3, b: 4, c: 5 }
 ```
 
 **Rest operator**
@@ -64,9 +62,9 @@ const data = `
     1 2 3 4
 `
 const pattern = `
-	foo ...bar
+    foo ...bar
 `
-reader(data, pattern)   // { foo: 1, bar: [2, 3, 4] }
+reader(data, pattern) // { foo: 1, bar: [2, 3, 4] }
 ```
 
 **Multi-line rest operator**
@@ -78,10 +76,25 @@ const data = `
     6 5
 `
 const pattern = `
-	foo
-	...bar[a b]
+    foo
+    ...bar[a b]
 `
-reader(data, pattern)   // { foo: 9, bar: [{ a: 8, b: 7 }, { a: 6, b: 5 }] }
+reader(data, pattern) // { foo: 9, bar: [{ a: 8, b: 7 }, { a: 6, b: 5 }] }
+```
+
+**Empty multi-line rest operator**
+If you don't specify the structure of each line, all the values will be collected directly into arrays.
+```javascript
+const data = `
+    9
+    8 7
+    6 5
+`
+const pattern = `
+    foo
+    ...bar[]
+`
+reader(data, pattern) // { foo: 9, bar: [[8, 7], [6, 5]] }
 ```
 
 **Nested rest operator**
@@ -92,18 +105,18 @@ const data = `
     5 6 7 8
 `
 const pattern = `
-	foo
-	...bar[a ...b]
+    foo
+    ...bar[a ...b]
 `
-reader(data, pattern)   // { foo: 9, bar: [{ a: 1, b: [2, 3, 4] }, { a: 5, b: [6, 7, 8] }] }
+reader(data, pattern) // { foo: 9, bar: [{ a: 1, b: [2, 3, 4] }, { a: 5, b: [6, 7, 8] }] }
 ```
 
 **Convert to numbers**
 ```javascript
 const data = '1 hello'
 const pattern = 'foo bar'
-reader(data, pattern, { convertToNumbers: true })   // { foo: 1, bar: 'hello' }
-reader(data, pattern, { convertToNumbers: false })   // { foo: '1', bar: 'hello' }
+reader(data, pattern, { convertToNumbers: true }) // { foo: 1, bar: 'hello' }
+reader(data, pattern, { convertToNumbers: false }) // { foo: '1', bar: 'hello' }
 ```
 
 ### Options

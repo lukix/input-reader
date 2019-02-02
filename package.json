@@ -1,10 +1,10 @@
 {
   "name": "input-reader",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Library for reading whitespace-separated data, which is a common input data format for tasks in many algorithmic competitions.",
   "main": "./src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "author": "Łukasz Jenczmyk",
   "license": "MIT",
@@ -14,5 +14,8 @@
   },
   "dependencies": {
     "zip-array": "1.0.1"
+  },
+  "devDependencies": {
+    "jest": "23.6.0"
   }
 }
