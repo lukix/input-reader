@@ -1,6 +1,6 @@
 {
   "name": "input-reader",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Library for reading whitespace-separated data, which is a common input data format for tasks in many algorithmic competitions.",
   "main": "./src/index.js",
   "scripts": {
